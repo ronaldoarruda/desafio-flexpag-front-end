@@ -1,0 +1,21 @@
+<form [formGroup]="formulario">
+  <div class="custom-select">
+    <label for="currency">Moeda</label>
+    <select  id="currency" formControlName="currency">
+      <option value="" *ngFor="let currency of currencies">{{ currency.text }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="initialDate">Data Inicial</label>
+    <input id="initialDate" type="date" formControlName="initialDate">
+    <div style='color:red' *ngIf="formulario.get('initialDate')?.errors?.['required'] && formulario.get('initialDate')?.touched">Escolha uma data inicial</div>
+  </div>
+  <div>
+    <label for="finalDate">Data Final</label>
+    <input id="finalDate" type="date" formControlName="finalDate">
+    <div style='color:red' *ngIf="formulario.get('finalDate')?.errors?.['required'] &&formulario.get('finalDate')?.touched">Escolha uma data final</div>
+    <div *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)" style="color: red"> Data final é maior que a inicial</div>
+  </div>
+  <button type="submit">Consultar dados</button>
+  <button>Atualizar dados</button>
+</form>
