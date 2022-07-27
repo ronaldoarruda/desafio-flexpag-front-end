@@ -24,14 +24,14 @@ export class NavComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.formulario = this.formBuilder.group({
-      currency: ['', [Validators.required]],
+      currency: ['USD', [Validators.required]],
       initialDate: ['', [Validators.required]],
       finalDate: ['', [Validators.required]]
     }, { validators: dateRangeValidation })
   }
 
   ngOnInit(): void {
-
+    this.formulario.valueChanges.subscribe(e => console.log(this.formulario))
   }
 
 }

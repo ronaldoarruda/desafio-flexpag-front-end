@@ -13,7 +13,7 @@ export const dateRangeValidation: ValidatorFn =
   const inDate = new Date(initialDate!.value);
   const fiDate = new Date(finalDate!.value);
   if (inDate <= fiDate) {
-    return {isEndDateLowerThanInitialDate: false}
+    return null
   } else {
     return {
       isEndDateLowerThanInitialDate:true
