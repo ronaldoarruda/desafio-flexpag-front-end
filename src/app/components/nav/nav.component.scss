@@ -1,29 +1,94 @@
 form {
   display: flex;
-  column-gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  column-gap: 4rem;
   border: 2px solid black;
-  border-radius: 0.25rem;
-  padding: 1rem 12rem;
-  background-color: rgb(227, 226, 226);
+  border-radius: 1rem;
+  width: 60vw;
+  height: 10rem;
+  box-shadow: 5px 5px black;
+}
+
+label {
+  font-size: 1.2em;
+  font-weight:600 ;
 }
 
 .custom-select {
   display: flex;
   flex-direction: column;
 
-  label {
-    font-size: 1.2em;
-    font-weight:600 ;
-  }
-
   select {
     font-size: 13px;
     font-weight: 600;
-    height: 2.5rem;
+    height: 3rem;
     padding: 0.25rem;
     cursor: pointer;
+    background-color: rgb(82, 82, 82);
     border: 2px solid black;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 3px 3px black;
   }
 }
 
+.custom-date {
+  display: flex;
+  flex-direction: column;
+  position:relative;
 
+  input {
+    font-size: 13px;
+    font-weight: 600;
+    height: 3rem;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: rgb(82, 82, 82);
+    color: white;
+    border: 2px solid black;
+    outline: none;
+    border-radius:5px;
+    box-shadow: 3px 3px black;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    background-color: white;
+    padding: 5px;
+    cursor:pointer;
+    border-radius: 3px;
+  }
+
+
+}
+
+
+button {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+
+  background-color: #0080ff;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 3px 3px black;
+  border: 2px solid black;
+
+  img {
+    height: 1rem;
+  }
+}
+
+button:disabled {
+  color: #ffffffa6;
+  background-color: #04519e;
+}
+
+.error {
+  position: absolute;
+  margin-top: 4.2rem;
+}

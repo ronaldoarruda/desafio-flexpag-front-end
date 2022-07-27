@@ -1,20 +1,20 @@
 <form [formGroup]="formulario">
   <div class="custom-select">
-    <label for="currency">Moeda</label>
+    <label for="currency">Moeda:</label>
     <select  id="currency" formControlName="currency">
       <option [value]="currency.id" *ngFor="let currency of currencies">{{ currency.text }}</option>
     </select>
   </div>
-  <div>
-    <label for="initialDate">Data Inicial</label>
+  <div class="custom-date">
+    <label for="initialDate">Data Inicial:</label>
     <input id="initialDate" type="date" formControlName="initialDate">
-    <div style='color:red' *ngIf="formulario.get('initialDate')?.errors?.['required'] && formulario.get('initialDate')?.touched">Escolha uma data inicial</div>
+    <div class="error" style='color:red; font-weight:600' *ngIf="formulario.get('initialDate')?.errors?.['required'] && formulario.get('initialDate')?.touched">Escolha uma data inicial</div>
   </div>
-  <div>
-    <label for="finalDate">Data Final</label>
-    <input id="finalDate" type="date" formControlName="finalDate">
-    <div style='color:red' *ngIf="formulario.get('finalDate')?.errors?.['required'] &&formulario.get('finalDate')?.touched">Escolha uma data final</div>
-    <div *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)" style="color: red"> Data final é maior que a inicial</div>
+  <div class="custom-date">
+    <label for="finalDate">Data Final:</label>
+    <input id="finalDate" type="date"  pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" formControlName="finalDate">
+    <div class="error" style='color:red; font-weight:600' *ngIf="formulario.get('finalDate')?.errors?.['required'] &&formulario.get('finalDate')?.touched">Escolha uma data final</div>
   </div>
-  <button [disabled]="formulario.invalid" type="submit">Consultar dados</button>  
+  <button [disabled]="formulario.invalid" type="submit"> <img src="/assets/search-outline.svg" alt=""> Consultar</button>
+  <div *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)" style="color: red"> Data final é maior que a inicial</div>
 </form>
