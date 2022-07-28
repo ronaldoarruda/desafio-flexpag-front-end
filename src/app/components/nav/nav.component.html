@@ -12,11 +12,31 @@
   </div>
   <div class="custom-date">
     <label for="finalDate">Data Final:</label>
-    <input id="finalDate" type="date"  pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" formControlName="finalDate">
+    <input id="finalDate" type="date" formControlName="finalDate">
     <div class="error-validation" *ngIf="formulario.get('finalDate')?.errors?.['required'] &&formulario.get('finalDate')?.touched">Escolha uma data final</div>
     <div class="error-validation" *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)"> Data final maior que Data Inicial</div>
   </div>
   <div class="action">
-    <button [disabled]="formulario.invalid" type="submit"> <img src="/assets/search-outline.svg" alt=""> Consultar</button>
+    <button [disabled]="formulario.invalid" type="submit" (click)="handleSubmit()"> <img src="/assets/search-outline.svg" alt=""> Consultar</button>
   </div>
 </form>
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Cotação de Compra</th>
+    <th>Cotação de Venda</th>
+    <th>Data e hora da cotação</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let b of data | async">
+    <td>{{ b.cotacaoCompra }}</td>
+    <td>{{ b.cotacaoVenda }}</td>
+    <td>{{ b.dataHoraCotacao }}</td>
+  </tr>
+</tbody>
+</table>
+
+
+
