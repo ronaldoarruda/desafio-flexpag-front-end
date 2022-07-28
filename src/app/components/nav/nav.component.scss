@@ -1,6 +1,7 @@
 form {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding: 2rem;
   justify-content: center;
   column-gap: 4rem;
   border: 2px solid black;
@@ -36,7 +37,6 @@ label {
 .custom-date {
   display: flex;
   flex-direction: column;
-  position:relative;
 
   input {
     font-size: 13px;
@@ -64,12 +64,11 @@ label {
 
 
 button {
-  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1.2rem;
   font-size: 12px;
-
   background-color: #0080ff;
   color: white;
   font-weight: 600;
@@ -88,7 +87,8 @@ button:disabled {
   background-color: #04519e;
 }
 
-.error {
-  position: absolute;
-  margin-top: 4.2rem;
+.error-validation {
+  color:red;
+  font-weight:600;
+   margin-top: 0.3rem
 }
