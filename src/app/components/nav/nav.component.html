@@ -1,42 +1,44 @@
-<form [formGroup]="formulario">
-  <div class="custom-select">
-    <label for="currency">Moeda:</label>
-    <select  id="currency" formControlName="currency">
-      <option [value]="currency.id" *ngFor="let currency of currencies">{{ currency.text }}</option>
-    </select>
-  </div>
-  <div class="custom-date">
-    <label for="initialDate">Data Inicial:</label>
-    <input id="initialDate" type="date" formControlName="initialDate">
-    <div class="error-validation" *ngIf="formulario.get('initialDate')?.errors?.['required'] && formulario.get('initialDate')?.touched">Escolha uma data inicial</div>
-  </div>
-  <div class="custom-date">
-    <label for="finalDate">Data Final:</label>
-    <input id="finalDate" type="date" formControlName="finalDate">
-    <div class="error-validation" *ngIf="formulario.get('finalDate')?.errors?.['required'] &&formulario.get('finalDate')?.touched">Escolha uma data final</div>
-    <div class="error-validation" *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)"> Data final maior que Data Inicial</div>
-  </div>
-  <div class="action">
-    <button [disabled]="formulario.invalid" type="submit" (click)="handleSubmit()"> <img src="/assets/search-outline.svg" alt=""> Consultar</button>
-  </div>
-</form>
+<section class="container">
+  <form [formGroup]="formulario" class="card">
+    <label>
+      <span>Moeda</span>
+      <select formControlName="currency">
+        <option [value]="currency.id" *ngFor="let currency of currencies">{{ currency.text }}</option>
+      </select>
+    </label>
 
-<table class="table table-striped">
-<thead>
-  <tr>
-    <th>Cotação de Compra</th>
-    <th>Cotação de Venda</th>
-    <th>Data e hora da cotação</th>
-  </tr>
-</thead>
-<tbody>
-  <tr *ngFor="let b of data | async">
-    <td>{{ b.cotacaoCompra }}</td>
-    <td>{{ b.cotacaoVenda }}</td>
-    <td>{{ b.dataHoraCotacao }}</td>
-  </tr>
-</tbody>
-</table>
+    <label>
+      <span>Data Inicial:</span>
+      <input formControlName="initialDate" type="date">
+      <span *ngIf="formulario.get('initialDate')?.errors?.['required'] && formulario.get('initialDate')?.touched">Escolha uma data inicial</span>
+    </label>
 
+    <label>
+      <span>Data Final:</span>
+      <input type="date" formControlName="finalDate">
+      <span *ngIf="formulario.get('finalDate')?.errors?.['required'] && formulario.get('finalDate')?.touched">Escolha uma data final</span>
+      <span *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)"> Data final maior que Data Inicial</span>
+    </label>
 
+    <button [disabled]="formulario.invalid" (click)="handleSubmit()"> <img src="/assets/search-outline.svg" alt=""> Consultar</button>
+  </form>
 
+  <section>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Cotação de Compra</th>
+          <th scope="col">Cotação de Venda</th>
+          <th scope="col">Data e hora da cotação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of data | async">
+          <td>{{ b.cotacaoCompra }}</td>
+          <td>{{ b.cotacaoVenda }}</td>
+          <td>{{ b.dataHoraCotacao }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>

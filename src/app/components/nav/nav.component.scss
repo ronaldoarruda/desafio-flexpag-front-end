@@ -1,14 +1,10 @@
 form {
   display: flex;
   align-items: flex-start;
-  padding: 2rem;
   justify-content: center;
-  column-gap: 4rem;
-  border: 2px solid black;
-  border-radius: 1rem;
   width: 60vw;
   height: 10rem;
-  box-shadow: 5px 5px black;
+
 }
 
 label {
@@ -91,4 +87,8 @@ button:disabled {
   color:red;
   font-weight:600;
    margin-top: 0.3rem
+}
+
+.custom-table {
+ height: 60%;
 }
