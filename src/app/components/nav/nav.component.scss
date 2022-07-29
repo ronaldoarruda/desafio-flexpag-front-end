@@ -1,94 +1,49 @@
-form {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 60vw;
-  height: 10rem;
-
-}
-
-label {
-  font-size: 1.2em;
-  font-weight:600 ;
-}
-
-.custom-select {
+.container {
   display: flex;
   flex-direction: column;
-
-  select {
-    font-size: 13px;
-    font-weight: 600;
-    height: 3rem;
-    padding: 0.25rem;
-    cursor: pointer;
-    background-color: rgb(82, 82, 82);
-    border: 2px solid black;
-    color: white;
-    border-radius: 5px;
-    box-shadow: 3px 3px black;
-  }
+  row-gap: 3rem;
+}
+/* navegação */
+.form-control, .form-select, ::-webkit-calendar-picker-indicator {
+  cursor: pointer;
 }
 
-.custom-date {
+.navbar {
+  padding: 2.5rem;
+  column-gap: 2rem;
   display: flex;
-  flex-direction: column;
-
-  input {
-    font-size: 13px;
-    font-weight: 600;
-    height: 3rem;
-    padding: 1rem;
-    cursor: pointer;
-    background-color: rgb(82, 82, 82);
-    color: white;
-    border: 2px solid black;
-    outline: none;
-    border-radius:5px;
-    box-shadow: 3px 3px black;
-  }
-
-  ::-webkit-calendar-picker-indicator {
-    background-color: white;
-    padding: 5px;
-    cursor:pointer;
-    border-radius: 3px;
-  }
-
-
+  align-items: baseline;
+  border-radius: 1rem;
 }
-
 
 button {
+  align-self: flex-end;
+  width: 10rem;
+}
+
+/* list */
+
+.main {
+  height: 40rem;
+  max-height: 40rem;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 1.2rem;
-  font-size: 12px;
-  background-color: #0080ff;
-  color: white;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  box-shadow: 3px 3px black;
-  border: 2px solid black;
 
-  img {
-    height: 1rem;
+  .instruction {
+    height:100%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      width: 70%;
+      text-align: center;
+    }
   }
 }
 
-button:disabled {
-  color: #ffffffa6;
-  background-color: #04519e;
-}
-
-.error-validation {
-  color:red;
-  font-weight:600;
-   margin-top: 0.3rem
-}
-
-.custom-table {
- height: 60%;
+th {
+  font-weight: 600;
 }

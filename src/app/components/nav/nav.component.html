@@ -1,29 +1,37 @@
 <section class="container">
-  <form [formGroup]="formulario" class="card">
+  <form [formGroup]="formulario" class="navbar navbar-expand-lg navbar-light bg-light">
+
     <label>
       <span>Moeda</span>
-      <select formControlName="currency">
+      <select formControlName="currency" class="form-select">
         <option [value]="currency.id" *ngFor="let currency of currencies">{{ currency.text }}</option>
       </select>
     </label>
 
     <label>
-      <span>Data Inicial:</span>
-      <input formControlName="initialDate" type="date">
-      <span *ngIf="formulario.get('initialDate')?.errors?.['required'] && formulario.get('initialDate')?.touched">Escolha uma data inicial</span>
+      <span>Data Inicial</span>
+      <input formControlName="initialDate" type="date" class="form-control">
+      <span
+        *ngIf="formulario.get('initialDate')?.errors?.['required'] && formulario.get('initialDate')?.touched">Escolha
+        uma data inicial</span>
     </label>
 
     <label>
-      <span>Data Final:</span>
-      <input type="date" formControlName="finalDate">
-      <span *ngIf="formulario.get('finalDate')?.errors?.['required'] && formulario.get('finalDate')?.touched">Escolha uma data final</span>
-      <span *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)"> Data final maior que Data Inicial</span>
+      <span>Data Final</span>
+      <input type="date" formControlName="finalDate" class="form-control">
+      <span *ngIf="formulario.get('finalDate')?.errors?.['required'] && formulario.get('finalDate')?.touched">Escolha
+        uma data final</span>
+      <span *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)">
+        Data final maior que Data Inicial</span>
     </label>
 
-    <button [disabled]="formulario.invalid" (click)="handleSubmit()"> <img src="/assets/search-outline.svg" alt=""> Consultar</button>
+      <button *ngIf="!(data$)?.length" [disabled]="formulario.invalid" (click)="handleSubmit()"
+        class="btn btn-primary btn-lg"><span *ngIf="loading" class="spinner-border spinner-border-sm"></span> Consultar</button>
+      <button *ngIf="(data$)?.length" [disabled]="formulario.invalid" (click)="handleSubmit()"
+        class="btn btn-success btn-lg"><span *ngIf="loading" class="spinner-border spinner-border-sm"></span>Atualizar</button>
   </form>
 
-  <section>
+  <section class="navbar navbar-expand-lg navbar-light bg-light main">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -32,13 +40,17 @@
           <th scope="col">Data e hora da cotação</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let b of data | async">
-          <td>{{ b.cotacaoCompra }}</td>
-          <td>{{ b.cotacaoVenda }}</td>
-          <td>{{ b.dataHoraCotacao }}</td>
+      <tbody *ngIf="(data$)?.length">
+        <tr *ngFor="let b of data$">
+          <td>{{ b.cotacaoCompra | currency:'BRL'}}</td>
+          <td>{{ b.cotacaoVenda | currency:'BRL'}}</td>
+          <td>{{ b.dataHoraCotacao | date: 'dd/MM/yyyy HH:MM:SS '}}</td>
         </tr>
       </tbody>
     </table>
+    <div *ngIf="!(data$)?.length" class="instruction">
+      <p>Para consultar o Histórico de cotação, selecione a Moeda, a
+        Data inicial e a Data final. Obrigado :)</p>
+    </div>
   </section>
 </section>
