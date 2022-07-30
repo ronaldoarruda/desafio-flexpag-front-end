@@ -1,5 +1,9 @@
 <section class="container">
-  <form [formGroup]="formulario" class="navbar navbar-expand-lg navbar-light bg-light">
+  <header>
+    <h1>Histórico de cotação</h1>
+  </header>
+
+  <form [formGroup]="formulario" class="navbar navbar-light bg-light form-bar">
 
     <label>
       <span>Moeda</span>
@@ -11,7 +15,7 @@
     <label>
       <span>Data Inicial</span>
       <input formControlName="initialDate" type="date" class="form-control">
-      <span
+      <span class="text-danger mt-1"
         *ngIf="formulario.get('initialDate')?.errors?.['required'] && formulario.get('initialDate')?.touched">Escolha
         uma data inicial</span>
     </label>
@@ -19,10 +23,10 @@
     <label>
       <span>Data Final</span>
       <input type="date" formControlName="finalDate" class="form-control">
-      <span *ngIf="formulario.get('finalDate')?.errors?.['required'] && formulario.get('finalDate')?.touched">Escolha
+      <span class="text-danger mt-1" *ngIf="formulario.get('finalDate')?.errors?.['required'] && formulario.get('finalDate')?.touched">Escolha
         uma data final</span>
-      <span *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)">
-        Data final maior que Data Inicial</span>
+      <span class="text-danger mt-1" *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)">
+        Data final maior que data inicial</span>
     </label>
 
       <button *ngIf="!(data$)?.length" [disabled]="formulario.invalid" (click)="handleSubmit()"
@@ -31,7 +35,7 @@
         class="btn btn-success btn-lg"><span *ngIf="loading" class="spinner-border spinner-border-sm"></span>Atualizar</button>
   </form>
 
-  <section class="navbar navbar-expand-lg navbar-light bg-light main">
+  <section class="navbar navbar-light bg-light main">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -49,8 +53,7 @@
       </tbody>
     </table>
     <div *ngIf="!(data$)?.length" class="instruction">
-      <p>Para consultar o Histórico de cotação, selecione a Moeda, a
-        Data inicial e a Data final. Obrigado :)</p>
+      <p>A cotação é o preço, ou valor, de uma moeda estrangeira. Este preço é estabelecido pelo mercado e pode sofrer variações constantes. Para consultar o <strong>Histórico de cotação do Real</strong>, selecione a Moeda, a Data inicial e a Data final. Obrigado :)</p>
     </div>
   </section>
 </section>
