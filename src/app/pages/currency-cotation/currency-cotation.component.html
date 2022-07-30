@@ -5,24 +5,24 @@
 
   <form [formGroup]="formulario" class="navbar navbar-light bg-light form-bar">
 
-    <label>
+    <label for="currency">
       <span>Moeda</span>
-      <select formControlName="currency" class="form-select">
+      <select formControlName="currency" class="form-select" id="currency" name="currency">
         <option [value]="currency.id" *ngFor="let currency of currencies">{{ currency.text }}</option>
       </select>
     </label>
 
-    <label>
+    <label for="initialDate">
       <span>Data Inicial</span>
-      <input formControlName="initialDate" type="date" class="form-control">
+      <input formControlName="initialDate" type="date" class="form-control" id="initialDate" name="initialDate">
       <span class="text-danger mt-1"
         *ngIf="formulario.get('initialDate')?.errors?.['required'] && formulario.get('initialDate')?.touched">Escolha
         uma data inicial</span>
     </label>
 
-    <label>
+    <label for="finalDate">
       <span>Data Final</span>
-      <input type="date" formControlName="finalDate" class="form-control">
+      <input type="date" formControlName="finalDate" class="form-control" id="finalDate" name="finalDate">
       <span class="text-danger mt-1" *ngIf="formulario.get('finalDate')?.errors?.['required'] && formulario.get('finalDate')?.touched">Escolha
         uma data final</span>
       <span class="text-danger mt-1" *ngIf="formulario.errors?.['isEndDateLowerThanInitialDate'] && (formulario.touched || formulario.dirty)">
@@ -35,7 +35,7 @@
         class="btn btn-success btn-lg"><span *ngIf="loading" class="spinner-border spinner-border-sm"></span>Atualizar</button>
   </form>
 
-  <section class="navbar navbar-light bg-light main">
+  <section class="navbar navbar-light bg-light main scrollbar" id="style-scroll">
     <table class="table table-striped">
       <thead>
         <tr>
