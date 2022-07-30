@@ -6,11 +6,11 @@ import { Validators } from '@angular/forms';
 import { CotationResponse, CurrencyCotationService } from 'src/app/services/currency-cotation.service';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  selector: 'app-currency-cotation',
+  templateUrl: './currency-cotation.component.html',
+  styleUrls: ['./currency-cotation.component.scss']
 })
-export class NavComponent implements OnInit {
+export class CurrencyCotationComponent implements OnInit {
   currencies = [
     { id: 'AUD', text: 'Dólar Australiano' },
     { id: 'CAD', text: 'Dólar Canadense' },

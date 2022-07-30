@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './components/nav/nav.component';
+import { CurrencyCotationComponent } from './pages/currency-cotation/currency-cotation.component';
 
 import { HttpClientModule } from '@angular/common/http'
 
@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
+    CurrencyCotationComponent,
   ],
   imports: [
     BrowserModule,
